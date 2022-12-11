@@ -20,21 +20,24 @@ Orders page. Create, Read, Update, and Delete orders!
 
 https://user-images.githubusercontent.com/91649994/206895538-cb70e223-51a6-4135-9b50-b61951a3eb4f.mp4
 
-<--------------------------------------->
+<--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 Products page. Create, Read, Update, and Delete products!
 ![Products](https://user-images.githubusercontent.com/91649994/206927273-a80a914e-4069-4673-97ec-7066ab5c7f37.PNG)
 
 
 https://user-images.githubusercontent.com/91649994/206927305-27d2b242-76bb-43e5-9080-d4aa2b4ae54d.mp4
 
-<--------------------------------------->
+<--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 Categories page. Create, Read, Update, and Delete product categories!
 ![Categories](https://user-images.githubusercontent.com/91649994/206927357-6ea389f2-9b2a-4a2b-87db-2c9a970b9eae.PNG)
 
 
 https://user-images.githubusercontent.com/91649994/206927373-e6a7c308-2f86-461d-9c48-b31d6ff0c586.mp4
 
-<--------------------------------------->
+<--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 Products in Orders page (Has the same function as an invoice). Create, Read, Update, and Delete invoices! 
 ![Products_in_Orders](https://user-images.githubusercontent.com/91649994/206927511-0986ce16-0a02-4811-b16d-6508ea69a5f2.PNG)
 
