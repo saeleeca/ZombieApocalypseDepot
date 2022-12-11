@@ -1,0 +1,193 @@
+{{!-- /*
+CITATION
+1. Scope: Templating Engine, CSS
+2. Date: 12/5/2022
+3. Originality: Adapted(templating engine), Copied(for CSS)
+4. Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app 
+CSS Source: https://www.w3schools.com/w3css/4/w3.css
+*/ --}}
+<head>
+<title>Customers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.menu {
+  display: none;
+}
+</style>
+</head>
+
+<!-- index.hbs -->
+<h1>Customers</h1>
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="/" class="w3-button w3-block w3-black">HOME</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="Customers" class="w3-button w3-block w3-black">Customers</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="Orders" class="w3-button w3-block w3-black">Orders</a>
+    </div>
+    <div class="w3-col s3">
+        <a href="Products" class="w3-button w3-block w3-black">Products</a>
+      </div>
+
+      <div class="w3-col s3">
+        <a href="Categories" class="w3-button w3-block w3-black">Categories</a>
+      </div>
+
+      <div class="w3-col s3">
+        <a href="Products_in_Orders" class="w3-button w3-block w3-black">Products in Orders</a>
+      </div>
+  </div>
+</div>
+<br>
+
+<h1>Customers</h1>
+
+
+{{!-- Create a table --}}
+<table id= "customers-table" border="1" cellpadding="5">>
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr data-value={{this.customer_id}}>>
+            <td>{{this.customer_id}}</td>
+            <td>{{this.first_name}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.street}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.state}}</td>
+            <td>{{this.zip_code}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.phone_number}}</td>
+            <td><button onclick="deleteCustomer({{this.customer_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_customer.js"></script>
+<br>
+
+{{!-- Form to add a record to the table  --}}
+<form id="add-customer-form-ajax">
+    <legend><strong>Add Customer</strong></legend>  
+    <fieldset>
+        <label for="input-first_name">First Name: </label>
+        <input type="text" name="input-first_name" id="input-first_name" required>
+        
+        <label for="input-last_name">Last Name: </label>
+        <input type="text" name="input-last_name" id="input-last_name" required>
+
+        <br>
+
+        <label for="input-street">Street: </label>
+        <input type="text" name="input-street" id="input-street" required>
+
+        <label for="input-city">City: </label>
+        <input type="text" name="input-city" id="input-city" required>
+
+        <label for="input-state">State: </label>
+        <input type="text" name="input-state" id="input-state" required>
+
+        <label for="input-zip_code">Zip Code: </label>
+        <input type="text" name="input-zip_code" id="input-zip_code" required>
+
+        <br>
+
+        <label for="input-email">Email: </label>
+        <input type="text" name="input-email" id="input-email" required>
+
+        <label for="input-phone_number">Phone Number: </label>
+        <input type="text" name="input-phone_number" id="input-phone_number" required>
+    </fieldset>
+</form>
+<input type="submit" form="add-customer-form-ajax" value="Add Customer">
+<div>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_customer.js"></script>
+
+<p></p>
+
+<form id="update-customer-form-ajax">
+    <legend><strong>Update Customer</strong></legend>      
+    <fieldset>
+        <label for="input-fullname">Customer Name: </label>
+        <select name="input-fullname" id="mySelect">
+            <option value="test">Select a Customer</option>
+            {{#each data}}
+            <option value="{{this.customer_id}}">{{this.first_name}} {{this.last_name}}</option>
+            {{/each}}
+        </select>
+        
+        <br>
+
+        <label for="input-street">Street: </label>
+        <input type="text" name="input-street" id="input-street-update">
+
+        <label for="input-city">City: </label>
+        <input type="text" name="input-city" id="input-city-update">
+
+        <label for="input-state">State: </label>
+        <input type="text" name="input-state" id="input-state-update">
+
+        <label for="input-zip_code">Zip Code: </label>
+        <input type="text" name="input-zip_code" id="input-zip_code-update">
+
+        <br>
+
+        <label for="input-email">Email: </label>
+        <input type="text" name="input-email" id="input-email-update">
+
+        <label for="input-phone_number">Phone Number: </label>
+        <input type="text" name="input-phone_number" id="input-phone_number-update">
+
+    </fieldset>
+</form>
+<input type="submit" form="update-customer-form-ajax" value="Update Customer">
+
+<script src="./js/update_customer.js"></script>
+
+<p></p>
+
+
+<form id="search-customer-html" method='GET' action='/customers'>
+<legend><strong>Search Customer</strong></legend> 
+<fieldset>
+<p>Search by last name using the field below.</p>
+
+    <label for="input-last_name">Last Name: </label>
+    <input type="text" name="last_name" id="input-last_name-html-search">
+    
+</fieldset>
+</form>
+<input type="submit" form="search-customer-html" value="Search">
+<a href='/Customers'><button>Reset</button></a>
